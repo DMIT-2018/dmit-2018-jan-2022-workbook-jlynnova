@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{id?}"
 @model WebApp.Pages.SamplePages.BasicsModel //fully qualified namespace
 @{
     //the cshtml page contains both csharp and html code
@@ -10,7 +10,9 @@
 
     ViewData["Title"] = "Review Page Basics";
 }
-<h1>Basics Review</h1>
+<h1>Basic Razor Page Review</h1>
+
+<h3>Demonstration of OnGet() Request processing </h3>
 
 @*This sample is to demonstrate display control using C# logic*@
 
@@ -22,3 +24,19 @@ else
 {
     <p>@Model.MyName</p>
 }<!--eof-->
+
+<h3>Demonstration of OnPost() request demonstration</h3>
+
+<form method="post">
+
+    <label>
+        Enter a number
+     </label>
+
+    <input type="number" asp-for="id" /><br/>
+    <button type="submit" value="A" id="theButton" name="theButton">A Button</button>
+    &nbsp;&nbsp; <!--non breaking space-->
+     <button type="submit" value="B" id="theButton" name="theButton">B Button</button>
+</form>  
+<br/>
+<p style="color:forestgreen; font-weight:bold;">@Model.Feedback</p>
