@@ -1,0 +1,24 @@
+﻿@page
+@model WebApp.Pages.SamplePages.BasicsModel //fully qualified namespace
+@{
+    //the cshtml page contains both csharp and html code
+    //teh @ takes processing from the html environment 
+    //and moves it to the c# environment
+    //processing any html moves processing into html environment from c#
+
+    //set teh text for the browser tab
+
+    ViewData["Title"] = "Review Page Basics";
+}
+<h1>Basics Review</h1>
+
+@*This sample is to demonstrate display control using C# logic*@
+
+@if (string.IsNullOrWhiteSpace(Model.MyName)) //access object with .
+{
+    <p>The random number is odd.</p>
+}
+else
+{
+    <p>@Model.MyName</p>
+}<!--eof-->

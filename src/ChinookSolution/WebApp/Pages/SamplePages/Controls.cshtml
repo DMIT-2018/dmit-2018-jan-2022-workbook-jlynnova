@@ -1,0 +1,41 @@
+﻿@page
+@model WebApp.Pages.SamplePages.ControlsModel
+@{
+    ViewData["Title"] = "Various Controls";
+}
+@*this code wirl use the decalred rendered sections for a COntent Page
+one can control one can control what goes into the RenderSection
+referring the section is by the name on the decalration
+
+in this example we will supply the RenderSection with the contents of a file 
+the file will be reffered to using the <partial> tag and the name="xxx"
+    this will bring in the contents of the referred file
+*@
+@section CustomCSS{
+    <partial name="_MyCustomCSS"/>
+}
+<h1> Various Form COntrols </h1>
+
+<section class="setflex">
+    <div class = "onethird">
+        <h3>Textboxes</h3>
+        <form method = "post">
+        <br/>
+        <button type="submit" value="textbox" id="theTextButton" name="theTextButton" asp-page-handler="Text">Text Submit</button>
+        </form>
+    </div>
+        <div class = "onethird">
+        <h3>RadioButton, Checkbox, TextArea</h3>
+        <form method = "post">
+        <br/>
+        <button type="submit" value="radiocheckarea" id="theRadioCheckAreaButton" name="theRadioCheckAreaButton" asp-page-handler="RadioCheckArea">Radio/Check/Area Submit</button>
+        </form>
+    </div>
+        <div class = "onethird">
+        <h3>List and Range</h3>
+        <form method = "post">
+        <br/>
+        <button type="submit" value="listrange" id="theListRangeButton" name="theListRangeButton" asp-page-handler="ListRange">ListRange Submit</button>
+        </form>
+    </div>
+</section>
