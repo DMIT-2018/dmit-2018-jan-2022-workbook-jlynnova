@@ -40,6 +40,11 @@ namespace ChinookSys
                 var context = serviceProvider.GetRequiredService<ChinookContext>();
                 return new GenreServices(context);
             });
+            services.AddTransient<ArtistServices>((serviceProvider) =>
+            {
+                var context = serviceProvider.GetRequiredService<ChinookContext>();
+                return new ArtistServices(context);
+            });
         }
     }
 }
