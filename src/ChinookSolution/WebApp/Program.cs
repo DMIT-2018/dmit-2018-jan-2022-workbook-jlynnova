@@ -1,13 +1,47 @@
+
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using WebApp.Data;
 
+#region Additional Namespaces
+using ChinookSys;
+#endregion
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+//given 
+//supplied db connection due to the fact that we create this web app to use Individual Accounts
+//code retrives the connection from appsettings.json
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+//Added
+//code retrives the connection string from appsettings.json for Chinook DB
+var connectionStringChinook = builder.Configuration.GetConnectionString("ChinookDB");
+
+//given
+//register the supplied connection string with the IServicesCollection (.Services)
+//registeres the connection strnig for Individual Accounts
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
+
+//added
+// <summary>
+// code the logic to add our class library services to IServiceCollection
+// one could do the registration code here in Program.cs
+// HOWEVER, every time a sercive class is added, you would be changing this file
+// the implementation of the DbContext and AddTransient(...) code in this example
+//     will be done in a extension method to IServiceCollection
+// the extension method will be coded inside the ChinookSystem class library
+// the extension method will have a parameter: options.UseSqlServer()
+// </summary>
+
+builder.Services.ChinookSysBackendDependencies(options =>
+    options.UseSqlServer(connectionStringChinook));
+
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
