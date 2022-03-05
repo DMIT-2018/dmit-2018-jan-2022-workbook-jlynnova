@@ -30,6 +30,16 @@ namespace ChinookSys
                 var context = serviceProvider.GetRequiredService<ChinookContext>();
                 return new AboutServices(context);
             });
+            services.AddTransient<AlbumServices>((serviceProvider) =>
+            {
+                var context = serviceProvider.GetRequiredService<ChinookContext>();
+                return new AlbumServices(context);
+            });
+            services.AddTransient<GenreServices>((serviceProvider) =>
+            {
+                var context = serviceProvider.GetRequiredService<ChinookContext>();
+                return new GenreServices(context);
+            });
         }
     }
 }
