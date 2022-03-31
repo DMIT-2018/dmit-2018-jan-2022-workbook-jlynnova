@@ -61,9 +61,9 @@ namespace WebApp.Pages.SamplePages
         public string playlistname { get; set; }
 
         public List<TrackSelection> trackInfo { get; set; }
-
+      //CQRS query data model
         public List<PlaylistTrackInfo> qplaylistInfo { get; set; }
-
+      //CQRD command model
         [BindProperty]
         public List<PlaylistTrackMove> cplaylistInfo { get; set; }
 
@@ -212,8 +212,11 @@ namespace WebApp.Pages.SamplePages
         {
             try
             {
-               //Add the code to process the list of tracks via the service.
-
+                //Add the code to process the list of tracks via the service.
+                string username = USERNAME;
+                _playlisttrackServices.PlaylistTrack_RemoveTracks(playlistname.Trim(),
+                    USERNAME, cplaylistInfo);
+                FeedBackMessage = "Tracks have been removed from your playlist";
 
                 return RedirectToPage(new
                 {

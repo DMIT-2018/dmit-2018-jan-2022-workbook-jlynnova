@@ -1,4 +1,13 @@
-<Query Kind="Expression" />
+<Query Kind="Expression">
+  <Connection>
+    <ID>f246f678-04eb-4381-9532-555bc939629b</ID>
+    <NamingServiceVersion>2</NamingServiceVersion>
+    <Persist>true</Persist>
+    <Server>.</Server>
+    <AllowDateOnlyTimeOnly>true</AllowDateOnlyTimeOnly>
+    <Database>Chinook</Database>
+  </Connection>
+</Query>
 
 //Aggregates
 //.Count()	counts the number of instances in the collection
