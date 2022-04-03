@@ -32,7 +32,7 @@ namespace ChinookSys.BLL
         public List<PlaylistTrackInfo> PlaylistTrack_Fetch_Playlist(string playlistname, string username)
         {
             IEnumerable<PlaylistTrackInfo> info = _context.PlaylistTracks
-                                                           .Where(x => x.Playlist.Name.Equals(playlistname, StringComparison.OrdinalIgnoreCase)
+                                                           .Where(x => x.Playlist.Name.Equals(playlistname)
                                                                     && x.Playlist.UserName.Equals(username))
                                                             .Select(x => new PlaylistTrackInfo
                                                            {
